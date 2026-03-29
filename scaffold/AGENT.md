@@ -12,6 +12,7 @@ obsidian-agent read "my-project" --section "TODO"
 # Check what's in the vault
 obsidian-agent list
 obsidian-agent recent                    # last 7 days
+obsidian-agent status                    # project status dashboard
 obsidian-agent stats                     # vault overview
 
 # Create

@@ -62,6 +62,9 @@ obsidian-agent update "build-api" --status active --summary "Core API"
 # Archive a completed project
 obsidian-agent archive "old-project"
 
+# Project status overview (with progress & deadlines)
+obsidian-agent status
+
 # Vault statistics
 obsidian-agent stats
 
@@ -160,6 +163,7 @@ related: ["[[other-note]]", "[[another-note]]"]
 | `backlinks <note>` | Show notes that link to a given note |
 | `update <note>` | Update note frontmatter (status, tags, summary) |
 | `archive <note>` | Set note status to archived |
+| `status [type]` | Project status overview dashboard (progress, deadlines, overdue) |
 | `stats` | Show vault statistics (counts, top tags, orphans) |
 | `graph` | Generate Mermaid knowledge graph diagram |
 | `orphans` | Find notes with no inbound links |
@@ -229,6 +233,7 @@ All commands support `--json` for machine-readable output:
 
 ```bash
 obsidian-agent search "API" --json
+obsidian-agent status --json
 obsidian-agent stats --json
 obsidian-agent list project --status active --json
 ```
@@ -274,7 +279,7 @@ Run as an [MCP](https://modelcontextprotocol.io/) server for AI assistants (Clau
 }
 ```
 
-Exposes 19 tools: journal, note, capture, search, list, read, recent, delete, backlinks, update, archive, patch, stats, orphans, graph, health, sync, tag_list, tag_rename.
+Exposes 20 tools: journal, note, capture, search, list, read, recent, delete, backlinks, update, archive, patch, status, stats, orphans, graph, health, sync, tag_list, tag_rename.
 
 ## Vault Health
 

@@ -10,6 +10,7 @@ obsidian-agent note "Title" type    # Create a note (area/project/resource/idea)
 obsidian-agent capture "idea"       # Quick idea capture
 obsidian-agent search "keyword"     # Search notes
 obsidian-agent list [type]          # List notes
+obsidian-agent status [type]        # Project status dashboard
 obsidian-agent review               # Generate weekly review
 obsidian-agent sync                 # Rebuild indices
 ```

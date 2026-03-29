@@ -50,6 +50,7 @@ description: |
 | 删除笔记 | `delete` | `{note}` — 自动清理引用 |
 | 反向链接 | `backlinks` | `{note}` |
 | 孤岛笔记 | `orphans` | `{}` |
+| 项目状态总览 | `status` | `{type?, tag?}` — 按状态分组，含进度/截止日 |
 | 统计 | `stats` | `{}` |
 | 健康检查 | `health` | `{}` |
 | 知识图谱 | `graph` | `{type?}` — 输出 Mermaid |
@@ -91,7 +92,7 @@ description: |
 
 ```
 1. Bash: obsidian-agent review
-2. list({type: "project", status: "active"})  — 活跃项目
+2. status()                                   — 项目状态总览
 3. recent({days: 7})                          — 本周更新
 4. 读取生成的 review 并补充项目进展
 ```
@@ -100,8 +101,8 @@ description: |
 
 ```
 1. Bash: obsidian-agent review monthly
-2. stats()                             — vault 统计
-3. list({type: "project"})             — 所有项目状态
+2. status()                            — 项目状态总览（含进度/截止日）
+3. stats()                             — vault 统计
 4. 读取生成的 review 并补充里程碑
 ```
 
@@ -118,8 +119,9 @@ description: |
 
 ```
 1. health()                            — 健康分数
-2. orphans()                           — 孤岛笔记
-3. stats()                             — 统计概览
+2. status()                            — 项目状态总览
+3. orphans()                           — 孤岛笔记
+4. stats()                             — 统计概览
 4. tag_list()                          — 标签检查
 5. 建议: 链接孤岛、更新过期笔记、合并重复标签
 ```
