@@ -364,6 +364,8 @@ Examples:
   obsidian-agent capture "Use Rust to rewrite the bottleneck module"
   obsidian-agent search "API" --type resource
   obsidian-agent list project --status active
+  obsidian-agent status                          # project dashboard
+  obsidian-agent status project --tag backend    # filtered view
   obsidian-agent review
   obsidian-agent sync
 `);

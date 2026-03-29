@@ -5,7 +5,8 @@ description: |
   Obsidian 知识库管理 — 通过 MCP 工具操作 PARA 结构 vault。
   Use when: "记笔记", "写日记", "搜知识库", "记录想法", "obsidian",
   "vault", "journal", "capture", "search notes", "weekly review",
-  "知识管理", "查笔记", "整理笔记", "回顾", "log work"
+  "知识管理", "查笔记", "整理笔记", "回顾", "log work",
+  "project status", "项目状态", "进度", "status overview"
 ---
 
 # /obsidian — Obsidian Vault 管理
@@ -27,8 +28,8 @@ description: |
 
 | 语言 | 关键词 |
 |------|--------|
-| 中文 | 记笔记、写日记、搜知识库、记录想法、查笔记、整理笔记、回顾、周回顾、月回顾、知识管理、记一下、写入 vault、更新笔记、归档 |
-| English | journal, capture, search notes, log work, weekly review, monthly review, vault stats, find notes, obsidian, knowledge base, read note |
+| 中文 | 记笔记、写日记、搜知识库、记录想法、查笔记、整理笔记、回顾、周回顾、月回顾、知识管理、记一下、写入 vault、更新笔记、归档、项目状态、进度总览 |
+| English | journal, capture, search notes, log work, weekly review, monthly review, vault stats, find notes, obsidian, knowledge base, read note, project status, status overview, progress |
 
 ## Intent → Tool 路由
 
