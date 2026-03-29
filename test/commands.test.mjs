@@ -218,7 +218,19 @@ describe('commands (import)', () => {
     assert.ok(result.total >= 1);
     assert.ok(typeof result.counts === 'object');
     assert.ok(typeof result.groups === 'object');
+    assert.ok(typeof result.overdueCount === 'number');
     assert.ok(result.groups.active && result.groups.active.length >= 1);
+  });
+
+  it('status includes todo progress and deadline', async () => {
+    const { status } = await import('../src/commands/status.mjs');
+    const result = status(TMP, { type: 'project' });
+    const projects = result.groups.active || [];
+    for (const n of projects) {
+      assert.ok('todo' in n);
+      assert.ok('deadline' in n);
+      assert.ok('overdue' in n);
+    }
   });
 
   it('status filters by type', async () => {
