@@ -130,6 +130,17 @@ const TOOLS = [
     },
   },
   {
+    name: 'status',
+    description: 'Project status overview — shows all projects/areas grouped by status (active/draft/archived)',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        type: { type: 'string', description: 'Filter by note type (default: project + area)' },
+        tag: { type: 'string', description: 'Filter by tag' },
+      },
+    },
+  },
+  {
     name: 'stats',
     description: 'Show vault statistics',
     inputSchema: { type: 'object', properties: {} },
@@ -283,6 +294,10 @@ export class McpServer {
             prepend: args.prepend,
             replace: args.replace,
           });
+        }
+        case 'status': {
+          const { status } = await import('./commands/status.mjs');
+          return status(this.vaultRoot, { type: args.type, tag: args.tag });
         }
         case 'stats': {
           const { stats } = await import('./commands/stats.mjs');

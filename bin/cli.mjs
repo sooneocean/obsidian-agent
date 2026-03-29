@@ -186,6 +186,15 @@ async function main() {
       break;
     }
 
+    case 'status': {
+      const { status } = await import('../src/commands/status.mjs');
+      result = status(resolveVault(flags), {
+        type: positional[0] || flags.type,
+        tag: flags.tag,
+      });
+      break;
+    }
+
     case 'stats': {
       const { stats } = await import('../src/commands/stats.mjs');
       result = stats(resolveVault(flags));
@@ -311,6 +320,7 @@ Commands:
   backlinks <note>         Show notes that link to a note
   update <note>            Update note frontmatter fields
   archive <note>           Set note status to archived
+  status [type]            Project status overview dashboard
   stats                    Show vault statistics
   graph                    Generate Mermaid knowledge graph
   orphans                  Find notes with no inbound links
@@ -361,7 +371,7 @@ Examples:
     }
 
     default: {
-      const cmds = ['init','journal','note','capture','search','list','review','sync','read','delete','recent','backlinks','update','archive','stats','graph','orphans','patch','tag','watch','health','setup','serve','hook','version','help'];
+      const cmds = ['init','journal','note','capture','search','list','review','sync','read','delete','recent','backlinks','update','archive','status','stats','graph','orphans','patch','tag','watch','health','setup','serve','hook','version','help'];
       const similar = cmds.filter(c => c.startsWith(command?.slice(0, 2) || '') || levenshtein(c, command) <= 2);
       console.error(`Unknown command: ${command}`);
       if (similar.length) console.error(`Did you mean: ${similar.join(', ')}?`);

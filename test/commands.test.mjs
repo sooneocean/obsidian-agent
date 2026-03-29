@@ -211,6 +211,48 @@ describe('commands (import)', () => {
     assert.ok(typeof result.orphans === 'number');
   });
 
+  it('status returns project overview grouped by status', async () => {
+    const { status } = await import('../src/commands/status.mjs');
+    const result = status(TMP);
+    assert.ok(typeof result.total === 'number');
+    assert.ok(result.total >= 1);
+    assert.ok(typeof result.counts === 'object');
+    assert.ok(typeof result.groups === 'object');
+    assert.ok(typeof result.overdueCount === 'number');
+    assert.ok(result.groups.active && result.groups.active.length >= 1);
+  });
+
+  it('status includes todo progress and deadline', async () => {
+    const { status } = await import('../src/commands/status.mjs');
+    const result = status(TMP, { type: 'project' });
+    const projects = result.groups.active || [];
+    for (const n of projects) {
+      assert.ok('todo' in n);
+      assert.ok('deadline' in n);
+      assert.ok('overdue' in n);
+    }
+  });
+
+  it('status filters by type', async () => {
+    const { status } = await import('../src/commands/status.mjs');
+    const result = status(TMP, { type: 'project' });
+    for (const notes of Object.values(result.groups)) {
+      for (const n of notes) {
+        assert.equal(n.type, 'project');
+      }
+    }
+  });
+
+  it('status filters by tag', async () => {
+    const { status } = await import('../src/commands/status.mjs');
+    const result = status(TMP, { tag: 'backend' });
+    for (const notes of Object.values(result.groups)) {
+      for (const n of notes) {
+        assert.ok(n.tags.includes('backend'));
+      }
+    }
+  });
+
   it('graph generates Mermaid output', async () => {
     const { graph } = await import('../src/commands/graph.mjs');
     const result = graph(TMP);
